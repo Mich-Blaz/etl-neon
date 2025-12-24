@@ -1,0 +1,27 @@
+name: Daily ETL
+
+on:
+  schedule:
+    - cron: "0 2 * * *"   # tous les jours à 02:00 UTC
+  workflow_dispatch:      # bouton "Run" manuel
+
+jobs:
+  run-etl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Télécharger le code
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
+      - name: Exécuter l'ETL
+        run: python etl.py
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
