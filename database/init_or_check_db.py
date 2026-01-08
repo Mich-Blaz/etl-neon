@@ -2,6 +2,7 @@ import sys
 import os
 import time
 
+from sqlalchemy.engine.reflection import Inspector
 from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError
 from .models import Base, Events

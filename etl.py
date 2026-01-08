@@ -7,7 +7,11 @@ if __name__ == '__main__':
     conf = get_config()
     if os.getenv('DATABASE_URL'):
         print('DATABASE URL exist')
-        tables = get_tables_database()
-        print(tables)
+        if wait_for_db():
+            print("let's continue")
+            tables = get_tables_database()
+            print(tables)
+        else:
+            print('STOP ;`-(')
     else:
         print('No URL of Database detected')
