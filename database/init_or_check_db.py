@@ -4,7 +4,7 @@ import time
 
 from sqlalchemy import create_engine
 from sqlalchemy.exc import OperationalError
-from models import Base, Events
+from .models import Base, Events
 
 
 
