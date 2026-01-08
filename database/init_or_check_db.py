@@ -30,8 +30,7 @@ def get_tables_database():
     try:
         inspector = Inspector.from_engine(engine)
         table_names = inspector.get_table_names()
-        tables = engine.table_names()
-        return tables
+        return table_names
     except Exception as e:
         print(f'Execption Occurs : {e}')
         return ['PAS DE TABLE']
