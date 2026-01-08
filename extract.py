@@ -58,7 +58,7 @@ if __name__ == '__main__':
 
     print(Path(__file__).absolute().parent.parent.as_posix())
 
-    from database.config import get_config
+    from config import get_config
 
     conf = get_config()
     old_date = (datetime.now()-timedelta(weeks=10000)).isoformat()

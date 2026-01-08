@@ -1,5 +1,4 @@
 columns_api : 
-  -  id
   -  event_id
   -  url
   -  title
