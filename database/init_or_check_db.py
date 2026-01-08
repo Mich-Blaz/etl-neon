@@ -28,7 +28,10 @@ def get_tables_database():
     url_database = get_database_url()
     engine = create_engine(url_database)
     try:
+        inspector = Inspector.from_engine(engine)
+        table_names = inspector.get_table_names()
         tables = engine.table_names()
         return tables
-    except :
-        return None
+    except Exception as e:
+        print(f'Execption Occurs : {e}')
+        return ['PAS DE TABLE']
