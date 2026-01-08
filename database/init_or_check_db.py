@@ -25,7 +25,7 @@ def wait_for_db(engine, max_retries=30):
 
 def get_tables_database():
     url_database = get_database_url()
-    engine = create_engine('sqlite:///yourdatabase.db')
+    engine = create_engine(url_database)
     try:
         tables = engine.table_names()
         return tables
