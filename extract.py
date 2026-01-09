@@ -45,6 +45,14 @@ def get_multiple_pages(url :str ,params:dict):
         all_records.extend(records)
     return all_records
 
+def get_api_data_from_date(conf,date = datetime.now()-timedelta(weeks=10000)):
+    old_date = date.isoformat()
+    params = build_params(limit=None,date_upload=old_date,cols=conf.columns_api)
+    res = get_multiple_pages(conf.url_api,params)
+    return res
+
+
+
 
 if __name__ == '__main__':
 # be aware of https_proxy if you have one
