@@ -1,5 +1,7 @@
-from sqlalchemy import create_engine, Column, Integer, String,Boolean, Float, DateTime
+from sqlalchemy import create_engine, Column, Integer, String,Boolean, Float, DateTime,Text
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.dialects.postgresql import JSONB
+
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 
@@ -9,28 +11,28 @@ class Events(Base):
     __tablename__ = 'events'
     
     event_id = Column(Integer, primary_key=True)
-    url = Column(String(100), nullable=False)
-    title = Column(String(100), nullable=False)
-    title_event = Column(String(100))
-    lead_text = Column(String(1000))
-    description = Column(String(1000))
-    address_name = Column(String(100))
-    locations = Column(String(1000))
-    address_street = Column(String(100))
-    address_zipcode = Column(String(10))
-    address_city = Column(String(50))
-    address_text = Column(String(100))
-    lat_lon = Column(String(20))
+    url = Column(Text, nullable=False)
+    title = Column(Text, nullable=False)
+    title_event = Column(Text)
+    lead_text = Column(Text)
+    description = Column(Text)
+    address_name = Column(Text)
+    locations = Column(JSONB)
+    address_street = Column(Text)
+    address_zipcode = Column(Text)
+    address_city = Column(Text)
+    address_text = Column(Text)
+    lat_lon = Column(JSONB)
     date_start = Column(DateTime, default=datetime.now)
     date_end = Column(DateTime, default=datetime.now)
     updated_at = Column(DateTime, default=datetime.now)
-    has_card = Column(Boolean,default=False)
-    access_link = Column(String(100))
-    access_link_text = Column(String(100))
-    address_url = Column(String(100))
-    address_url_text = Column(String(100))
-    address_name = Column(String(100))
-    qfap_tags = Column(String(50))
+    has_card = Column(Boolean,default=0)
+    access_link = Column(Text)
+    access_link_text = Column(Text)
+    address_url = Column(Text)
+    address_url_text = Column(Text)
+    address_name = Column(Text)
+    qfap_tags = Column(Text)
     flag_interest = Column(Boolean)
 
 
