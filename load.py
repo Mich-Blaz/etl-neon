@@ -28,6 +28,11 @@ def init_database_events(db_url : str =None, conf = None):
         res = get_api_data_from_date(date=latest_updated_at_,conf=conf)
         if len(res) > 0:
             stmt = insert(Events).values(res)
+            update_dict = {c.name: c for c in stmt.excluded if c.name != 'event_id'}
+            stmt = stmt.on_conflict_do_update(
+                index_elements=['event_id'],
+                set_=update_dict
+            )
             session.execute(stmt)
             session.commit()
             print(f"✅ {len(res)} events mis à jour dans la base de données")
