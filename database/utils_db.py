@@ -3,7 +3,7 @@ import os
 import time
 
 from sqlalchemy.engine.reflection import Inspector
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine,func
 from sqlalchemy.exc import OperationalError
 from .models import Base, Events
 from sqlalchemy.dialects.postgresql import insert

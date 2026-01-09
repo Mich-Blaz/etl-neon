@@ -1,6 +1,6 @@
 from extract import get_api_data_from_date
 from database.models import Base, Events
-from database.utils_db import wait_for_db,sessionmaker,create_engine,insert
+from database.utils_db import wait_for_db,sessionmaker,create_engine,insert,func
 
 
 def init_database_events(db_url : str =None, conf = None):
