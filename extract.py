@@ -9,7 +9,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 def build_params(limit : int = 20 ,offset : int = 0  ,date_upload : str="2025-12-22T20:54:05.476662",cols = ['']):
     cols = ','.join(cols)
     params = {
-    'where': f'updated_at >= "{date_upload}"',
+    'where': f'updated_at > "{date_upload}"',
     'limit': limit,
     'select': cols,
     "offset":offset}
